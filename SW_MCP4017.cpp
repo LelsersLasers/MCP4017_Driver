@@ -6,8 +6,7 @@ MCP4017::MCP4017(uint8_t adcAddress, uint8_t maxSteps, float maxOhms) {
   _currentStep = 0;
   _currentRout = 0.0;
   _maxOhm = maxOhms;
-
-  // We are going to assume that Wire.begin() has been called in setup()
+  Wire.begin();
 }
 
 /////////////////////////////////////////////////////////////////////////////
