@@ -1,7 +1,6 @@
 #include "SW_MCP4017.h"
 
-MCP4017::MCP4017(uint8_t adcAddress, uint8_t maxSteps, float maxOhms)
-{
+MCP4017::MCP4017(uint8_t adcAddress, uint8_t maxSteps, float maxOhms) {
   I2CADCAddress = adcAddress;
   _maxSteps = maxSteps;
   _currentStep = 0;
@@ -18,9 +17,7 @@ MCP4017::MCP4017(uint8_t adcAddress, uint8_t maxSteps, float maxOhms)
 */
 /////////////////////////////////////////////////////////////////////////////
 
-void MCP4017::setSteps(uint8_t steps)
-{
-
+void MCP4017::setSteps(uint8_t steps) {
 	_currentStep = steps;
 	float temp1 = (float)steps / _maxSteps;
 	float temp2 = temp1 * _maxOhm;
@@ -37,12 +34,9 @@ void MCP4017::setSteps(uint8_t steps)
 */
 /////////////////////////////////////////////////////////////////////////////
 
-void MCP4017::setResistance(double Rout)
-{
-	
+void MCP4017::setResistance(double Rout) {	
 	uint8_t tempsteps = (int)((_maxSteps * (Rout - WIPEROHMS)) / _maxOhm);
 	setSteps(tempsteps);
-
 }
 
 /////////////////////////////////////////////////////////////////////////////
@@ -53,8 +47,7 @@ void MCP4017::setResistance(double Rout)
 */
 /////////////////////////////////////////////////////////////////////////////
 
-float MCP4017::calcResistance()
-{
+float MCP4017::calcResistance() {
 	//float Rout;
 	//Rout = ((_currentStep / _maxSteps) * _maxOhm) + WIPEROHMS;
 	return _currentRout;
@@ -67,9 +60,7 @@ float MCP4017::calcResistance()
 */
 /////////////////////////////////////////////////////////////////////////////
 
-void MCP4017::I2CSendSteps(uint8_t steps)
-{
-
+void MCP4017::I2CSendSteps(uint8_t steps) {
 	Wire.beginTransmission(I2CADCAddress);
 	Wire.write(steps); // 
 	Wire.endTransmission();
