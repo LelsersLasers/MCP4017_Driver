@@ -1,19 +1,3 @@
-/////////////////////////////////////////////////////////////////////////////
-/*!
-
-  MCP4017.h
-  I2C Driver for Microchip's MCP4017 by Ryan Edwards, Sparkys Widgets
-  
-  Use this library with MCP4017 or other similar I2C Digital Potentiometers!
-  (A good pair can be the Microchip MCP4017 and the Analog Devices AD5246, as they dont share address.) 
-
-  I invest a lot of time and resources providing open source hardware, software, and tutorials 
-  Please help support my efforts by purchasing products from www.sparkyswidgets.com, donating some time 
-  on documentation or you can even donate some BitCoin to 1NwPNsf6t5vpph6AYY5bg361PSppPSSgDn
-
-*/
-/////////////////////////////////////////////////////////////////////////////
-
 #ifndef _SW_MCP4017_H
 #define _SW_MCP4017_H
 
