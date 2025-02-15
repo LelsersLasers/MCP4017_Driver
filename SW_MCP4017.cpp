@@ -1,12 +1,14 @@
 #include "SW_MCP4017.h"
 
-MCP4017::MCP4017(uint8_t adcAddress, uint8_t maxSteps, float maxOhms) {
-  I2CADCAddress = adcAddress;
-  _maxSteps = maxSteps;
-  _currentStep = 0;
-  _currentRout = 0.0;
-  _maxOhm = maxOhms;
-  Wire.begin();
+MCP4017::MCP4017(uint8_t adcAddress, uint8_t maxSteps, float maxOhms, TwoWire &wire) {
+	I2CADCAddress = adcAddress;
+	_maxSteps = maxSteps;
+	_currentStep = 0;
+	_currentRout = 0.0;
+	_maxOhm = maxOhms;
+
+	_wire = &wire;
+	_wire.begin();
 }
 
 /////////////////////////////////////////////////////////////////////////////
@@ -60,9 +62,9 @@ float MCP4017::calcResistance() {
 /////////////////////////////////////////////////////////////////////////////
 
 void MCP4017::I2CSendSteps(uint8_t steps) {
-	Wire.beginTransmission(I2CADCAddress);
-	Wire.write(steps); // 
-	Wire.endTransmission();
+	_wire.beginTransmission(I2CADCAddress);
+	_wire.write(steps); // 
+	_wire.endTransmission();
 }
 
 

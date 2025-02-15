@@ -12,11 +12,10 @@
 
 #define WIPEROHMS 20 //the aproximate amount of extra resistance/error added by the wiper
 #define MCP4017ADDRESS 0x2F //Microchip MCP4017 I2C 5K, 10K, 50K and 100K digital potentiometers, default address (only address really)
-#define AD5246ADDRESS  0x2E //Analog Devices AD5246 I2C 5K, 10K, 50K and 100K DPs, default address(only really, good complimant to above) 
 
 class MCP4017 {
  public:
-	MCP4017(uint8_t adcAddress, uint8_t maxSteps, float maxOhms); //Overload for only this class initialization
+	MCP4017(uint8_t adcAddress, uint8_t maxSteps, float maxOhms, TwoWire &wire = Wire); //Overload for only this class initialization
 
 	void setSteps(uint8_t steps);
 	void setResistance(double Rout);
@@ -29,6 +28,7 @@ class MCP4017 {
  	int _currentStep;
  	float _maxOhm;
 	float _currentRout;
+	TwoWire *_wire;
 };
 
 #endif
