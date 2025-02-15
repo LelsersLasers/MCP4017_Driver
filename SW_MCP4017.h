@@ -15,8 +15,8 @@
 
 class MCP4017 {
  public:
-	MCP4017(uint8_t adcAddress, uint8_t maxSteps, float maxOhms, TwoWire &wire = Wire); //Overload for only this class initialization
-
+	MCP4017();
+	void begin(uint8_t adcAddress, uint8_t maxSteps, float maxOhms, TwoWire &wire = Wire);
 	void setSteps(uint8_t steps);
 	void setResistance(double Rout);
 	float calcResistance();

@@ -1,6 +1,8 @@
 #include "SW_MCP4017.h"
 
-MCP4017::MCP4017(uint8_t adcAddress, uint8_t maxSteps, float maxOhms, TwoWire &wire) {
+MCP4017::MCP4017() {}
+
+MCP4017::begin(uint8_t adcAddress, uint8_t maxSteps, float maxOhms, TwoWire &wire) {
     I2CADCAddress = adcAddress;
     _maxSteps = maxSteps;
     _currentStep = 0;
@@ -8,7 +10,7 @@ MCP4017::MCP4017(uint8_t adcAddress, uint8_t maxSteps, float maxOhms, TwoWire &w
     _maxOhm = maxOhms;
 
     _wire = &wire;
-    _wire.begin();
+    _wire->begin();
 }
 
 /////////////////////////////////////////////////////////////////////////////
