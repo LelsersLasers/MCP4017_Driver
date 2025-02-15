@@ -22,13 +22,9 @@ void MCP4017::setSteps(uint8_t steps)
 {
 
 	_currentStep = steps;
-	Serial.println(_maxOhm);
 	float temp1 = (float)steps / _maxSteps;
-	Serial.println(temp1);
 	float temp2 = temp1 * _maxOhm;
-	Serial.println(temp2);
 	_currentRout = temp2 + WIPEROHMS;
-	Serial.println(_currentRout);
 	//_currentRout = (((float)steps / _maxSteps) * _maxOhm) + WIPEROHMS;
 	I2CSendSteps(_currentStep);
 
