@@ -7,7 +7,7 @@ MCP4017::MCP4017(uint8_t maxSteps, float maxOhms) {
     _maxOhm = maxOhms;
 }
 
-MCP4017::begin(uint8_t adcAddress, TwoWire &wire) {
+void MCP4017::begin(uint8_t adcAddress, TwoWire &wire) {
     I2CADCAddress = adcAddress;
     _wire = &wire;
     _wire->begin();
@@ -64,9 +64,9 @@ float MCP4017::calcResistance() {
 /////////////////////////////////////////////////////////////////////////////
 
 void MCP4017::I2CSendSteps(uint8_t steps) {
-    _wire.beginTransmission(I2CADCAddress);
-    _wire.write(steps); // 
-    _wire.endTransmission();
+    _wire->beginTransmission(I2CADCAddress);
+    _wire->write(steps); // 
+    _wire->endTransmission();
 }
 
 
