@@ -7,10 +7,10 @@ MCP4017::MCP4017(uint8_t maxSteps, float maxOhms) {
     _maxOhm = maxOhms;
 }
 
+// Caller is responsible for begin() on I2C wire.
 void MCP4017::begin(uint8_t adcAddress, TwoWire &wire) {
     I2CADCAddress = adcAddress;
     _wire = &wire;
-    _wire->begin();
 }
 
 /////////////////////////////////////////////////////////////////////////////
